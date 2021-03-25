@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,8 @@ public class PlainteController {
 	}
 
 	@PostMapping("/ajouterPlainte")
-	public String ajouterPlainte(@Valid @ModelAttribute("plainteForm") PlainteForm plainteForm, BindingResult result, Model model) {
+	public String ajouterPlainte(@Valid @ModelAttribute("plainteForm") PlainteForm plainteForm, BindingResult result, 
+			Model model, final RedirectAttributes ra) {
 		log.info("Plainte saisie {}", plainteForm);
 		if (result.hasErrors()) {
 			Map<String, String> provenanceMap = ConstantesPlainte.getProvenance();
@@ -54,6 +56,7 @@ public class PlainteController {
 		} catch (ParseException e) {
 			log.info("Impossible d'enregistrer la plainte");
 		}
+		ra.addFlashAttribute("successFlash", "Plainte " +plainteForm.getNumero()+ " enregistrée");
 		return "redirect:/listePlainte";
 	}
 	

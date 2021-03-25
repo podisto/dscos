@@ -4,6 +4,10 @@
 	</div>
 
 	<div class="container-fluid">
+	<div th:if="${successFlash != null}" class="alert alert-success alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		<p th:text="${successFlash}"></p>
+	</div>
 		<div class="card mb-4">
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i>
