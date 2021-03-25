@@ -6,8 +6,7 @@ import lombok.Data;
 
 @Data
 public class Plainte {
-	
-	private String numeroPlainte;
+	private String numero;
 	private Date dateArrivee;
 	private String provenance;
 	private String type;

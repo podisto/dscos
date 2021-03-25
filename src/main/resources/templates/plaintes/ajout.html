@@ -1,0 +1,39 @@
+<main xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:fragment="content" layout:decorate="~{layout}" xmlns:th="http://www.thymeleaf.org">
+	<div class="container-fluid">
+		<h1 class="mt-4">Formulaire Plainte</h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item active">Plaintes</li>
+		</ol>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card mb-4">
+					<div class="card">
+						<h5 class="card-header">Formulaire</h5>
+						<div class="card-body">
+							<form action="#" th:action="@{/ajouterPlainte}" method="post" th:object="${plainteForm}">
+								<div class="form-group">
+									<label for="numero">Numéro*</label> 
+									<input type="text" class="form-control" id="numero" placeholder="Numéro" th:field="*{numero}">
+									<div class="alert alert-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></div>
+								</div>
+								<div class="form-group">
+									<label for="dateArrivee">Date Arrivée*</label> 
+									<input type="date" class="form-control" id="dateArrivee" required th:field="*{dateArrivee}">
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelect1">Provenance*</label> 
+									<select class="form-control" id="exampleFormControlSelect1" required th:field="*{provenance}">
+										<option th:each="item : ${provenanceMap}" th:value="${item.key}" th:text="${item.value}" />
+									</select>
+								</div>
+								<button type="submit" class="btn btn-primary">Enregistrer</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</main>

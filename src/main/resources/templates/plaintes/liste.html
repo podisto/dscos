@@ -1,0 +1,50 @@
+<main xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:fragment="content" layout:decorate="~{layout}">
+	<div class="container-fluid">
+		<h1 class="mt-4">Liste Plaintes</h1>
+	</div>
+
+	<div class="container-fluid">
+		<div class="card mb-4">
+			<div class="card-header">
+				<i class="fas fa-table mr-1"></i>
+				Liste Plaintes
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<thead>
+						<tr>
+							<th>Type</th>
+							<th>Numéro</th>
+							<th>Date Arrivée</th>
+							<th>Provenance</th>
+							<th>Actions</th>
+						</tr>
+						</thead>
+						
+						<tbody>
+						<tr th:each="plainte : ${listePlainte}">
+							<td th:text="${plainte.type}"></td>
+							<td th:text="${plainte.numero}"></td>
+							<td th:text="${#dates.format(plainte.dateArrivee, 'dd/MM/yyyy')}"></td>
+							<td th:text="${plainte.provenance}"></td>
+							<td>
+								<button type="button" class="btn btn-primary" title="Modifier">
+									<i class="fa fa-edit"></i>
+								</button>
+								<button type="button" class="btn btn-info" title="Stocker">
+									<i class="fa fa-check"></i>
+								</button>
+								<button type="button" class="btn btn-danger" title="Supprimer">
+									<i class="fa fa-trash"></i>
+								</button>
+							</td>
+						</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
