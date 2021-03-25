@@ -6,5 +6,7 @@ public interface PlainteRepository {
     void enregistrerEnBase(Plainte plainte);
 
 	List<Plainte> listePlainte();
+
+	boolean estCeQueLeNumeroExiste(String numeroSaisie);
 }
 

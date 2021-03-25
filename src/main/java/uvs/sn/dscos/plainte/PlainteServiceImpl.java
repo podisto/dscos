@@ -30,6 +30,7 @@ public class PlainteServiceImpl implements PlainteService {
             plainte.setType(PLAINTE_INDIRECTE);
         }
         plainte.setProvenance(ConstantesPlainte.getLibelleProvenance(form.getProvenance()));
+        
         plainteRepository.enregistrerEnBase(plainte);
     }
 
@@ -41,5 +42,10 @@ public class PlainteServiceImpl implements PlainteService {
 	@Override
 	public List<Plainte> afficherListePlainte() {
 		return plainteRepository.listePlainte();
+	}
+
+	@Override
+	public boolean estCeQueLeNumeroExisteDeja(String numero) {
+		return plainteRepository.estCeQueLeNumeroExiste(numero);
 	}
 }

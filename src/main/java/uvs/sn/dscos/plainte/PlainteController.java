@@ -43,6 +43,12 @@ public class PlainteController {
 			model.addAttribute("provenanceMap", provenanceMap);
 			return "plaintes/ajout";
 		}
+		if (plainteService.estCeQueLeNumeroExisteDeja(plainteForm.getNumero())) {
+			Map<String, String> provenanceMap = ConstantesPlainte.getProvenance();
+			model.addAttribute("provenanceMap", provenanceMap);
+			model.addAttribute("numeroExisteDeja", plainteForm.getNumero());
+			return "plaintes/ajout";
+		}
 		try {
 			plainteService.ajouterUnePlainte(plainteForm);
 		} catch (ParseException e) {

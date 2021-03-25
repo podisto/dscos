@@ -8,5 +8,7 @@ public interface PlainteService {
 	void ajouterUnePlainte(PlainteForm form) throws ParseException;
 
 	List<Plainte> afficherListePlainte();
+	
+	boolean estCeQueLeNumeroExisteDeja(String numero);
 
 }

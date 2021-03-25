@@ -21,4 +21,14 @@ public class InMemoryPlainteRepository implements PlainteRepository {
 	public List<Plainte> listePlainte() {
 		return new ArrayList<>(plaintes);
 	}
+
+	@Override
+	public boolean estCeQueLeNumeroExiste(String numeroSaisie) {
+		for (Plainte plainte: plaintes) {
+			if (plainte.getNumero().equals(numeroSaisie)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
